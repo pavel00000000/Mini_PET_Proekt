@@ -4,17 +4,18 @@ using System.Collections.Generic;
 
 namespace Mini_PET_Proekt.Services
 {
+
     public interface IBookService
     {
         List<Book> GetBooks();
         void AddBook(Book book);
     }
 
-    public class BookService : IBookService
+    public class BookSservice : IBookService
     {
         private readonly MySqlConnection _connection;
 
-        public BookService(MySqlConnection connection)
+        public BookSservice(MySqlConnection connection)
         {
             _connection = connection;
         }

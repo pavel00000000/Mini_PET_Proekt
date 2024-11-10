@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 var builder = WebApplication.CreateBuilder(args);
 
 // Регистрация сервиса BookService
-builder.Services.AddTransient<IBookService, BookService>();
+builder.Services.AddTransient<IBookService, BookSservice>();
 
 // Регистрация MySQL подключения
 builder.Services.AddTransient<MySqlConnection>(sp =>

@@ -1,4 +1,6 @@
-﻿namespace Mini_PET_Proekt.Models
+﻿using Mini_PET_Proekt.Models;
+
+namespace Mini_PET_Proekt.Models
 {
     public class Book
     {
@@ -7,4 +9,6 @@
         public string Author { get; set; }
         public int Year { get; set; }
     }
+
 }
+
