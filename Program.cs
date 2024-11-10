@@ -1,23 +1,31 @@
+using Mini_PET_Proekt.Services;
+using MySql.Data.MySqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Регистрация сервиса BookService
+builder.Services.AddTransient<IBookService, BookSservice>();
+
+// Регистрация MySQL подключения
+builder.Services.AddTransient<MySqlConnection>(sp =>
+    new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Настройка конвейера обработки запросов
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
